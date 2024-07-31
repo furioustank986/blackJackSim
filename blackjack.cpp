@@ -53,13 +53,13 @@ int main(){
     int minFails = INT_MAX;
     int failures  = 0;//number of failures
     int safest[7] = {0};
-    for (int s1 = 1; s1 < maxBet; s1++){
-        for (int s2 = 1; s2 < maxBet; s2++){
-            for (int s3 = 1; s3 < maxBet; s3++){
-                for (int s4 = 1; s4 < maxBet; s4++){
-                    for (int s5 = 1; s5 < maxBet; s5++){
-                        for (int s6 = 1; s6 < maxBet; s6++){
-                            int temp[7] =  {1, s1, s2, s3, s4, s5, s6};
+    for (int s1 = 1; s1 <= maxBet; s1++){
+        for (int s2 = 1; s2 <= s1; s2++){
+            for (int s3 = 1; s3 <= s2; s3++){
+                for (int s4 = 1; s4 <= s3; s4++){
+                    for (int s5 = 1; s5 <= s4; s5++){
+                        for (int s6 = 1; s6 <= s5; s6++){
+                            int temp[7] =  {1, s6, s5, s4, s3, s2, s1};
                             assignArray(current, temp);
                             totalHands = 0;
                             totalGain = 0;
