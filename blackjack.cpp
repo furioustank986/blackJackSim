@@ -226,6 +226,70 @@ double doRound(){
     return ret;
 }
 int split(){
+    pair<int, int> res = value(hand);
+    if (res.first){//if the count is soft
+        switch (res.second){
+            case 12:
+                break;
+            case 13:
+                break;
+            case 14:
+                break;
+            case 15:
+                break;
+            case 16:
+                break;
+            case 17:
+                break;
+            case 18:
+                break;
+            case 19:
+                break;
+            case 20:
+                break;
+            default: 
+                break;
+        }
+    } else {
+        switch (res.second){
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
+            case 10:
+                break;
+            case 11:
+                break;
+            case 12:
+                break;
+            case 13:
+                break;
+            case 14:
+                break;
+            case 15:
+                break;
+            case 16:
+                break;
+            case 17:
+                break;
+            case 18:
+                break;
+            case 19:
+                break;
+            case 20:
+                break;
+            case 21:
+                break;
+        }
+    }
     return 0;
 }
 pair<int, int> doHand(){
@@ -430,59 +494,5 @@ int surrender(){
     return 0;
 }     
 int doDealer(){
-    pair<int, int> res = value(hand);
-    if (res.first){//if the count is soft
-        switch (res.second){
-            case 12:
-                break;
-            case 13:
-                break;
-            case 14:
-                break;
-            case 15:
-                break;
-            case 16:
-                break;
-            case 17:
-                break;
-            case 18:
-                break;
-            case 19:
-                break;
-            case 20:
-                break;
-            default: 
-                break;
-        }
-    } else {
-        switch (res.second){
-            case 4:
-                break;
-            case 5:
-                break;
-            case 6:
-                break;
-            case 7:
-                break;
-            case 8:
-                break;
-            case 9:
-                break;
-            case 10:
-                break;
-            case 11:
-                break;
-            case 12:
-                break;
-            case 13:
-                break;
-            case 14:
-                break;
-            case 15:
-                break;
-            case 16:
-                break;
-        }
-    }
     return 0;
 }
