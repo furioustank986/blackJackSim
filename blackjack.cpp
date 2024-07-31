@@ -33,9 +33,9 @@ int hitOrStand();//TODO returns whether you should hit or stand. 1 on hit, 0 on 
 pair<int, int> value(vector<int> input);//returns whether it is a soft count, and the current value of the hand if they were to stand.
 pair<int, int> simulate(int betSpread[7]);//simulate a player playing by the rules and bet spread; return hands played if won, return 0 if lost, second element returns remaining bankroll
 int doShoe(int betSpread[7], int &br);//simulate a single shoe; returns number of hands played
-double doRound();//TODO simulate a single round; returns number of bets won or lost
+double doRound();//simulate a single round; returns number of bets won or lost
 int tc();//returns true count
-int doDealer();//TODO simulates a dealer, returns dealer's total
+int doDealer();//simulates a dealer, returns dealer's total
 pair<int, int> doHand();//simulate a single hand; returns the value of the hand, number of bets riding on this hand.
 int surrender();//returns whether you should surrender
 void assignArray(int arr1[7], int arr2[7]);//assigns arr2 to arr1
