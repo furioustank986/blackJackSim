@@ -222,6 +222,7 @@ double doRound(){
         dealerRan = 1;
         if (dealerTotal > 21 || dealerTotal < i.first) ret += i.second;//if dealer busts or player won
         else if (dealerTotal > i.first) ret -= i.second;//if player lost
+        else ret = ret;//if push
     }
     return ret;
 }
