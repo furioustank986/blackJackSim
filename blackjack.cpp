@@ -494,5 +494,14 @@ int surrender(){
     return 0;
 }     
 int doDealer(){
-    return 0;
+    int val = value(dealer).second;
+    while (val <= 17){
+        if (val == 17){
+            if (s17) return 17;
+            if (value(dealer).first == 1) dealer.push_back(draw());
+            else break;
+        }
+        val = value(dealer).second;
+    }
+    return val;
 }
