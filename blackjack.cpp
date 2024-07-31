@@ -494,14 +494,14 @@ int surrender(){
     return 0;
 }     
 int doDealer(){
-    int val = value(dealer).second;
-    while (val <= 17){
-        if (val == 17){
-            if (s17) return 17;
-            if (value(dealer).first == 1) dealer.push_back(draw());
-            else break;
+    int val = value(dealer).second;//stores value of dealer's hand
+    while (val <= 17){//dealer always hits below a 17
+        if (val == 17){//if 17
+            if (s17) return 17;//stand if rules dictate
+            if (value(dealer).first == 1) dealer.push_back(draw());//hit if hits soft 17
+            else break;//stands if hard 17
         }
-        val = value(dealer).second;
+        val = value(dealer).second;//update dealer's hand value
     }
-    return val;
+    return val;//return dealer's hand value
 }
