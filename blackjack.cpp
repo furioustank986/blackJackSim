@@ -198,7 +198,7 @@ double doRound(){
                 return -0.5;//if surrendered
         }
         if (!splits || (doubleAfterSplit)){//if hasn't split yet or double after split is offered
-            if (doubleDown()) {
+            if (doubleDown()) {//if strategy is to double down
                 hand.push_back(draw());
                 result = {value(hand).second, 2};
                 totals.push_back(result);
@@ -239,14 +239,250 @@ pair<int, int> doHand(){
     return {value(hand).second, bets};
 }
 int hitOrStand(){
+    pair<int, int> res = value(hand);
+    if (res.first){//if the count is soft
+        switch (res.second){
+            case 12:
+                break;
+            case 13:
+                break;
+            case 14:
+                break;
+            case 15:
+                break;
+            case 16:
+                break;
+            case 17:
+                break;
+            case 18:
+                break;
+            case 19:
+                break;
+            case 20:
+                break;
+            default: 
+                break;
+        }
+    } else {
+        switch (res.second){
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
+            case 10:
+                break;
+            case 11:
+                break;
+            case 12:
+                break;
+            case 13:
+                break;
+            case 14:
+                break;
+            case 15:
+                break;
+            case 16:
+                break;
+            case 17:
+                break;
+            case 18:
+                break;
+            case 19:
+                break;
+            case 20:
+                break;
+            case 21:
+                break;
+        }
+    }
     return 0;
 }
 int doubleDown(){
-    return 0;
+    pair<int, int> res = value(hand); 
+    if (res.first){//if the count is soft
+        switch (res.second){
+            case 12:
+                break;
+            case 13:
+                break;
+            case 14:
+                break;
+            case 15:
+                break;
+            case 16:
+                break;
+            case 17:
+                break;
+            case 18:
+                break;
+            case 19:
+                break;
+            case 20:
+                break;
+            default: 
+                break;
+        }
+    } else {
+        switch (res.second){
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
+            case 10:
+                break;
+            case 11:
+                break;
+            case 12:
+                break;
+            case 13:
+                break;
+            case 14:
+                break;
+            case 15:
+                break;
+            case 16:
+                break;
+            case 17:
+                break;
+            case 18:
+                break;
+            case 19:
+                break;
+            case 20:
+                break;
+            case 21:
+                break;
+        }
+    }
+      return 0;
 }
 int surrender(){
+    pair<int, int> res = value(hand);
+    if (res.first){//if the count is soft
+        switch (res.second){
+            case 12:
+                break;
+            case 13:
+                break;
+            case 14:
+                break;
+            case 15:
+                break;
+            case 16:
+                break;
+            case 17:
+                break;
+            case 18:
+                break;
+            case 19:
+                break;
+            case 20:
+                break;
+            default: 
+                break;
+        }
+    } else {
+        switch (res.second){
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
+            case 10:
+                break;
+            case 11:
+                break;
+            case 12:
+                break;
+            case 13:
+                break;
+            case 14:
+                break;
+            case 15:
+                break;
+            case 16:
+                break;
+        }
+    }
     return 0;
-}
+}     
 int doDealer(){
+    pair<int, int> res = value(hand);
+    if (res.first){//if the count is soft
+        switch (res.second){
+            case 12:
+                break;
+            case 13:
+                break;
+            case 14:
+                break;
+            case 15:
+                break;
+            case 16:
+                break;
+            case 17:
+                break;
+            case 18:
+                break;
+            case 19:
+                break;
+            case 20:
+                break;
+            default: 
+                break;
+        }
+    } else {
+        switch (res.second){
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
+            case 10:
+                break;
+            case 11:
+                break;
+            case 12:
+                break;
+            case 13:
+                break;
+            case 14:
+                break;
+            case 15:
+                break;
+            case 16:
+                break;
+        }
+    }
     return 0;
 }
