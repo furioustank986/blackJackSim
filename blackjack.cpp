@@ -289,7 +289,7 @@ int hitOrStand(){
                 break;
         }
     } else {
-        if (res.second > 21) break;
+        if (res.second > 21) return 0;
         switch (res.second){
             case 4:
                 break;
@@ -357,7 +357,7 @@ int doubleDown(){
                 break;
         }
     } else {
-        if (res.second > 21) break;
+        if (res.second > 21) return 0;
         switch (res.second){
             case 4:
                 break;
@@ -473,7 +473,7 @@ int doDealer(){
             if (s17) return 17;//stand if rules dictate
             if (value(dealer).first == 1) dealer.push_back(draw());//hit if hits soft 17
             else break;//stands if hard 17
-        }
+        } else dealer.push_back(draw());
         val = value(dealer).second;//update dealer's hand value
     }
     return val;//return dealer's hand value
