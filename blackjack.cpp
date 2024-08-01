@@ -77,7 +77,8 @@ int main(){
     cout << "Blackjack modifier:";
     cin >> blackJackModifier;
     cout << "Insurance allowed[y/n]:";
-    cin >> insuranceAllowed;
+    cin >> temp;
+    insuranceAllowed = temp == 'y';
     cout << "Iterations:";
     cin >> iterations;
     cout << "Accepted risk in %:";
