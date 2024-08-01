@@ -56,7 +56,7 @@ int main(){
     char temp;
     cout << "Number of Decks:";
     cin >> numDeck;
-    cout << "Deck penetration (number of decks under cut card:";
+    cout << "Deck penetration (number of decks under cut card):";
     cin >> penetration;
     cout << "Surrender allowed[y/n]:";
     cin >> temp;
@@ -86,6 +86,8 @@ int main(){
     cin >> goal;
     cout << "bankroll:";
     cin >> bankroll;
+    cout << "iterations:";
+    cin >> iterations;
     for (int s1 = 1; s1 <= maxBet; s1++){
         for (int s2 = 1; s2 <= s1; s2++){
             for (int s3 = 1; s3 <= s2; s3++){
