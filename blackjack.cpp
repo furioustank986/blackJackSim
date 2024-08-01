@@ -17,10 +17,10 @@ int s17 = 0;//dealer stands on 17?
 int resplitAces =  0;//can you resplit aces?
 int maxSplits = 1;//what's the maximum number of times you can split?
 int maxBet = 5;//what's the table maximum, in terms of betting units?
-int blackJackModifier = 1.5;//how much money is won when you have a blackJack; 1.5 for 3 to 2, 1.2 for 6 to 5
+double blackJackModifier = 1.5;//how much money is won when you have a blackJack; 1.5 for 3 to 2, 1.2 for 6 to 5
 int insuranceAllowed = 1;//whether insurance is offered
 //simulation parameters
-long long int iterations = 1000000;//how many times the simulation would be run
+long long int iterations = 100;//how many times the simulation would be run
 double acceptedRisk = 1;//acceptable risk of ruin in %
 int goal = 2000;//goal in betting units
 double bankroll = 1000;//bankroll in betting units
@@ -55,40 +55,39 @@ int main(){
     int safest[7] = {0};
     char temp;
     cout << "Number of Decks:";
-    cin >> numDeck;
+//    cin >> numDeck;
     cout << "Deck penetration (number of decks under cut card):";
-    cin >> penetration;
+ //   cin >> penetration;
     cout << "Surrender allowed[y/n]:";
-    cin >> temp;
-    surrenderAllowed = temp == 'y';
+//    cin >> temp;
+//    surrenderAllowed = temp == 'y';
     cout << "Double after split allowed[y/n]:";
-    cin >> temp;
-    doubleAfterSplit = temp == 'y';
+//    cin >> temp;
+//    doubleAfterSplit = temp == 'y';
     cout << "Dealer stands on all 17[y/n]:";
-    cin >> temp;
-    s17 = temp == 'y';
+//    cin >> temp;
+//    s17 = temp == 'y';
     cout << "Resplit aces allowed[y/n]:";
-    cin >> temp;
-    resplitAces = temp == 'y';
+//    cin >> temp;
+//    resplitAces = temp == 'y';
     cout << "Max splits:";
-    cin >> maxSplits;
+//    cin >> maxSplits;
     cout << "Table max in betting units:";
-    cin >> maxBet;
+//    cin >> maxBet;
     cout << "Blackjack modifier:";
-    cin >> blackJackModifier;
+//    cin >> blackJackModifier;
     cout << "Insurance allowed[y/n]:";
-    cin >> temp;
-    insuranceAllowed = temp == 'y';
-    cout << "Iterations:";
-    cin >> iterations;
+//    cin >> temp;
+//    insuranceAllowed = temp == 'y';
     cout << "Accepted risk in %:";
-    cin >> acceptedRisk;
+//    cin >> acceptedRisk;
     cout << "goal:";
-    cin >> goal;
+//    cin >> goal;
     cout << "bankroll:";
-    cin >> bankroll;
+//    cin >> bankroll;
     cout << "iterations:";
-    cin >> iterations;
+//    cin >> iterations;
+    cout << "\n";
     int spreadDone = 0;
     int totalSpread = 1;
     for (int i = 1; i <= maxBet; i++) totalSpread *= i;
@@ -106,7 +105,7 @@ int main(){
                             failures = 0;
                             riskOfRuin = 0;
                             for (int i = 0; i < iterations; i++){
-                                cout << "\rIteration " << i+1 << " of " << iterations;
+                                cout << i+1 << "\n";
                                 results = simulate(current);
                                 if (results.first == 0){
                                     continue;
@@ -140,6 +139,7 @@ int main(){
         for (int i:safest) cout << i << " ";
         cout << "\n" << "Risk of Ruin:" << ((double)minFails)/iterations*100 << "%";
     }
+    return 0;
 }
 void assignArray(int arr1[7], int arr2[7]){
     for (int i = 0; i < 7; i++) arr1[i] = arr2[i];
@@ -164,7 +164,8 @@ void shuffle(){
 }
 int tc(){
     if (rc == 0) return 0;
-    return rc/(shoe.size()/52);
+    int ret = rc/(shoe.size()/52);
+    return min(ret, 6);
 }
 pair<int, int> value(vector<int> input){
     int aces = 0;
@@ -184,7 +185,8 @@ pair<int, int> value(vector<int> input){
     return {sc, sum};
 }
 int doShoe(int betSpread[7], double &br){
-    int bet;//bet according to the true count
+    shuffle();
+    int bet = betSpread[tc()];//bet according to the true count
     int numHands = 0;//number of hands played in the deck
     while (shoe.size() > (numDeck - penetration) * 52 && br > 8 * betSpread[6] && tc() > -1 && br < goal){//while cut card hasn't come out, you have enough bankroll to bet 8 bets, true count isn't negative, and haven't reached goal yet
         bet = betSpread[tc()];//bet size
@@ -198,7 +200,7 @@ pair<int,int> simulate(int betSpread[7]){
     double br = bankroll;
     int sum = 0;
     int ret = 0;
-    while (br > betSpread[6] && br < goal){//while not successful or broke
+    while (br > 8 * betSpread[6] && br < goal){//while not successful or broke
         sum += doShoe(betSpread, br);
     }
     if (br >= goal) ret = sum;
