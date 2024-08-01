@@ -230,22 +230,32 @@ int split(){
     pair<int, int> res = value(hand);
     switch (res.second){
         case 2:
+            return 1;
             break;
         case 4:
-            break;
         case 6:
+            if (dealer[0] >= 4 && dealer[0] <= 6) return 1;
+            if (doubleAfterSplit && (dealer[0] == 2 || dealer[0] == 3)) return 1;
             break;
         case 8:
+            if (doubleAfterSplit){
+                if (dealer[0] == 5 || dealer[0] == 6) return 1;
+            }
             break;
         case 10:
             break;
         case 12:
+            if (dealer[0] <= 6 && dealer[0] >= 3) return 1;
             break;
         case 14:
+            if (dealer[0] >= 2 && dealer[0] <= 7) return 1;
             break;
         case 16:
+            return 1;
             break;
         case 18:
+            if (dealer[0] == 7 || dealer[0] == 10 || dealer[0] == 1) return 0;
+            else return 1;
             break;
         case 20:
             break;
@@ -266,24 +276,16 @@ pair<int, int> doHand(){
 int hitOrStand(){
     pair<int, int> res = value(hand);
     if (res.first){//if the count is soft
-        switch (res.second){
-            case 12:
-                break;
+        switch(res.second){       
             case 13:
-                break;
             case 14:
-                break;
             case 15:
-                break;
             case 16:
-                break;
             case 17:
+                return 1;
                 break;
             case 18:
-                break;
-            case 19:
-                break;
-            case 20:
+                if (dealer[0] >= 9 || dealer[0] == 1) return 1;
                 break;
             default: 
                 break;
@@ -292,30 +294,23 @@ int hitOrStand(){
         if (res.second > 21) return 0;
         switch (res.second){
             case 4:
-                break;
             case 5:
-                break;
             case 6:
-                break;
             case 7:
-                break;
             case 8:
-                break;
             case 9:
-                break;
             case 10:
-                break;
             case 11:
+                return 1;
                 break;
             case 12:
+                if (dealer[0] != 4 && dealer[0] != 5 && dealer[0] != 6) return 1;
                 break;
             case 13:
-                break;
             case 14:
-                break;
             case 15:
-                break;
             case 16:
+                if (dealer[0] >= 2 && dealer[0] <= 6) return 1;
                 break;
             case 17:
                 break;
@@ -338,18 +333,22 @@ int doubleDown(){
             case 12:
                 break;
             case 13:
-                break;
             case 14:
+                if (dealer[0] == 5 || dealer[0] == 6) return 1;
                 break;
             case 15:
                 break;
             case 16:
+                if (dealer[0] >= 4 && dealer[0] <= 6) return 1;
                 break;
             case 17:
                 break;
             case 18:
+                if (dealer[0] >= 4 && dealer[1] <= 6) return 1;
+                if (!s17 && dealer[0] == 2) return 1;
                 break;
             case 19:
+                if (dealer[0] == 6 && !s17) return 1;
                 break;
             case 20:
                 break;
@@ -370,10 +369,15 @@ int doubleDown(){
             case 8:
                 break;
             case 9:
+                if (dealer[0] == 3 || dealer[0] == 4 || dealer[0] == 5 || dealer[0] == 6) return 1;
                 break;
             case 10:
+                if (dealer[0] == 10 || dealer[0] == 1) return 0;
+                else return 1;
                 break;
             case 11:
+                if (dealer[0] == 1 && s17) return 0;
+                else return 1;
                 break;
             case 12:
                 break;
@@ -449,10 +453,14 @@ int surrender(){
             case 14:
                 break;
             case 15:
+                if (dealer[0] == 10) return 1;
+                if (dealer[0] == 1 && !s17) return 1;
                 break;
             case 16:
+                if (dealer[0] == 9 || dealer[0] == 10 || dealer[0] == 1) return 1;
                 break;
             case 17:
+                if (dealer[0] == 1 && !s17) return 1;
                 break;
             case 18:
                 break;
