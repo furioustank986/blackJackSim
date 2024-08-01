@@ -27,9 +27,9 @@ double bankroll = 1000;//bankroll in betting units
 //functions
 void shuffle();//starts new shoe
 int draw();//draws a single card from shoe and updates running count
-int split();//TODO returns whether you should split
-int doubleDown();//TODO returns whether you should double down
-int hitOrStand();//TODO returns whether you should hit or stand. 1 on hit, 0 on stand
+int split();//returns whether you should split
+int doubleDown();//returns whether you should double down
+int hitOrStand();//returns whether you should hit or stand. 1 on hit, 0 on stand
 pair<int, int> value(vector<int> input);//returns whether it is a soft count, and the current value of the hand if they were to stand.
 pair<int, int> simulate(int betSpread[7]);//simulate a player playing by the rules and bet spread; return hands played if won, return 0 if lost, second element returns remaining bankroll
 int doShoe(int betSpread[7], int &br);//simulate a single shoe; returns number of hands played
