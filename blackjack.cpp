@@ -88,12 +88,16 @@ int main(){
     cin >> bankroll;
     cout << "iterations:";
     cin >> iterations;
+    int spreadDone = 0;
+    int totalSpread = 1;
+    for (int i = 1; i <= maxBet; i++) totalSpread *= i;
     for (int s1 = 1; s1 <= maxBet; s1++){
         for (int s2 = 1; s2 <= s1; s2++){
             for (int s3 = 1; s3 <= s2; s3++){
                 for (int s4 = 1; s4 <= s3; s4++){
                     for (int s5 = 1; s5 <= s4; s5++){
                         for (int s6 = 1; s6 <= s5; s6++){
+                            cout << "Spread " << ++spreadDone << " of " << totalSpread << "\n";
                             int temp[7] =  {1, s6, s5, s4, s3, s2, s1};
                             assignArray(current, temp);
                             totalHands = 0;
@@ -101,6 +105,7 @@ int main(){
                             failures = 0;
                             riskOfRuin = 0;
                             for (int i = 0; i < iterations; i++){
+                                cout << "\rIteration " << i+1 << " of " << iterations;
                                 results = simulate(current);
                                 if (results.first == 0){
                                     continue;
