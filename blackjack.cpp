@@ -53,6 +53,39 @@ int main(){
     int minFails = INT_MAX;
     int failures  = 0;//number of failures
     int safest[7] = {0};
+    char temp;
+    cout << "Number of Decks:";
+    cin >> numDeck;
+    cout << "Deck penetration (number of decks under cut card:";
+    cin >> penetration;
+    cout << "Surrender allowed[y/n]:";
+    cin >> temp;
+    surrenderAllowed = temp == 'y';
+    cout << "Double after split allowed[y/n]:";
+    cin >> temp;
+    doubleAfterSplit = temp == 'y';
+    cout << "Dealer stands on all 17[y/n]:";
+    cin >> temp;
+    s17 = temp == 'y';
+    cout << "Resplit aces allowed[y/n]:";
+    cin >> temp;
+    resplitAces = temp == 'y';
+    cout << "Max splits:";
+    cin >> maxSplits;
+    cout << "Table max in betting units:";
+    cin >> maxBet;
+    cout << "Blackjack modifier:";
+    cin >> blackJackModifier;
+    cout << "Insurance allowed[y/n]:";
+    cin >> insuranceAllowed;
+    cout << "Iterations:";
+    cin >> iterations;
+    cout << "Accepted risk in %:";
+    cin >> acceptedRisk;
+    cout << "goal:";
+    cin >> goal;
+    cout << "bankroll:";
+    cin >> bankroll;
     for (int s1 = 1; s1 <= maxBet; s1++){
         for (int s2 = 1; s2 <= s1; s2++){
             for (int s3 = 1; s3 <= s2; s3++){
@@ -204,7 +237,7 @@ double doRound(){
                 totals.push_back(result);
             }
         }
-        if (splits < maxSplits && split()){//if logic says to split and we can still split according to the rules
+        if (splits < maxSplits && split() && !(splits != 0 && !resplitAces)){//if logic says to split and we can still split according to the rules
             newHands.push(splits + 1);
             newHands.push(hand[1]);
             hand.pop_back();
